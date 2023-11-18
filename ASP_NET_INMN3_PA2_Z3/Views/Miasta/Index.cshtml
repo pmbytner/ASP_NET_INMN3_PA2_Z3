@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ASP_NET_INMN3_PA2_Z3.Models.Miasto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form>
+    <p>Wyszukaj w nazwie: <input name="id" value="@ViewData["id"]"/> <input type="submit" value="Szukaj" /></p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Populacja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Powierzchnia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Miasto miasto in Model) { //Modelem w akcji Index jest lista miast, a nie jedno Miasto
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => miasto.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => miasto.Populacja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => miasto.Powierzchnia)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@miasto.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@miasto.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@miasto.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
